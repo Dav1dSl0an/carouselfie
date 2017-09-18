@@ -4,6 +4,7 @@ import { MenuController, NavController } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome';
 
 import { TranslateService } from '@ngx-translate/core';
+import { Api } from "../../providers/api";
 
 
 
@@ -21,7 +22,7 @@ export class TutorialPage {
   slides: Slide[];
   showSkip = true;
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
+  constructor(public api: Api, public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
       "TUTORIAL_SLIDE2_TITLE",
@@ -50,6 +51,7 @@ export class TutorialPage {
         ];
       });
   }
+  
 
   startApp() {
     this.navCtrl.setRoot(WelcomePage, {}, {

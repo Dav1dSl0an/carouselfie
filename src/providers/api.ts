@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from "rxjs/Rx";
+
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -8,7 +10,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Api {
   url: string = 'https://example.com/api/v1';
-
+  //private hostName = 'https://carouselfie.herokuapp.com'; //window.location.protocol + '//' + "10.0.1.4:4000";
+  //private hostName = window.location.protocol + '//' + "10.0.1.4:4000";
+  private hostName = "http://re.directto.it";
+  
   constructor(public http: Http) {
   }
 
@@ -29,6 +34,39 @@ export class Api {
     }
 
     return this.http.get(this.url + '/' + endpoint, options);
+  }
+
+
+  getSignedRequest(fileName, fileType){
+    const headers = new Headers({'Content-Type': 'image/jpeg'});
+    
+    return this.http.get(this.hostName +'/api/carouselfie/sign-s3?fileName='+fileName+"&fileType="+fileType,  {headers: headers})
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
+  upload (signedRequest, file){
+    const headers = new Headers({'Content-Type': 'image/jpeg'});
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put(signedRequest, file, options)
+      .map(response => response)
+      .catch(error => Observable.throw(error));
+  }
+
+  addRecord(imageInfo: any) {
+    const body = JSON.stringify(imageInfo);
+    console.log(body);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    //const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+    return this.http.post(this.hostName +'/api/carouselfie/addrecord', body, {headers: headers})
+      .map(response => response.json())
+      .catch(error => Observable.throw(error));
+  }
+
+  getAllRecords() {
+    return this.http.get(this.hostName +'/api/carouselfie/getallrecordsforuser')
+      .map(response => response.json())
+      .catch(error => Observable.throw(error));
   }
 
   post(endpoint: string, body: any, options?: RequestOptions) {

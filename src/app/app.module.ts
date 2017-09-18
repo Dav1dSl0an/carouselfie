@@ -33,6 +33,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { UploadPage } from "../pages/upload/upload";
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { ViewimagesPage } from "../pages/viewimages/viewimages";
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { FullImagePage } from "../pages/full-image/full-image";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -71,7 +76,10 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage
+    WelcomePage,
+    UploadPage,
+    ViewimagesPage,
+    FullImagePage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +92,9 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    Ng2ImgMaxModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,7 +112,10 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage
+    WelcomePage,
+    UploadPage,
+    ViewimagesPage,
+    FullImagePage
   ],
   providers: [
     Api,
