@@ -37,7 +37,10 @@ import { UploadPage } from "../pages/upload/upload";
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { ViewimagesPage } from "../pages/viewimages/viewimages";
 import { IonicImageViewerModule } from 'ionic-img-viewer';
-import { FullImagePage } from "../pages/full-image/full-image";
+import { FullImagePageModule } from "../pages/full-image/full-image.module";
+import { UploadPageModule } from "../pages/upload/upload.module";
+import { ViewimagesPageModule } from "../pages/viewimages/viewimages.module";
+//import { FullImagePageModule } from "../pages/full-image";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -76,14 +79,15 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage,
-    UploadPage,
-    ViewimagesPage,
-    FullImagePage
+    WelcomePage
+    
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FullImagePageModule,
+    UploadPageModule,
+    ViewimagesPageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -112,10 +116,7 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage,
-    UploadPage,
-    ViewimagesPage,
-    FullImagePage
+    WelcomePage
   ],
   providers: [
     Api,
