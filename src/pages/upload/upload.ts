@@ -119,7 +119,7 @@ export class UploadPage {
                   
                 }
               );
-            this.presentToast('Success!, Thanks for Sharing');
+            this.presentToast('Success! Thanks for Sharing');
             this.loading.dismiss();
           }
         },
