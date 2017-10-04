@@ -24,7 +24,7 @@
             <div style="position:absolute;top:10px;left:0px;height:83px;width:100%;">
               <button ion-button  icon-start round class="large-button" type="button" md-button color="primary" (click)="imgFileInput.click()"><ion-icon name="ios-reverse-camera"></ion-icon>Add a photo</button>
               <input style="display:none;" id="photo" type="file" #imgFileInput (change)="previewImage($event, getImageDimensions)"/>
-              <button ion-button icon-start round (click)="upload()" [disabled]="uploaded"><ion-icon name="share"></ion-icon>Share</button>
+              <button ion-button icon-start round (click)="upload()" [disabled]="uploaded"><ion-icon name="share"></ion-icon>Upload It</button>
             </div>
         </div>
     </div>
