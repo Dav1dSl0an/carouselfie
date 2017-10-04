@@ -22,9 +22,11 @@
 
             <div style="position:absolute;top:0px;left:0px;background-color:#fff;opacity:.3;height:83px;width:100%;"></div>
             <div style="position:absolute;top:10px;left:0px;height:83px;width:100%;">
-              <button ion-button  icon-start round class="large-button" type="button" md-button color="primary" (click)="imgFileInput.click()"><ion-icon name="ios-reverse-camera"></ion-icon>Add a photo</button>
+              <button ion-button  icon-start round class="large-button" type="button" md-button color="primary" (click)="imgFileInput.click()"><ion-icon name="ios-reverse-camera"></ion-icon>Take a photo</button>
               <input style="display:none;" id="photo" type="file" #imgFileInput (change)="previewImage($event, getImageDimensions)"/>
-              <button ion-button icon-start round (click)="upload()" [disabled]="uploaded"><ion-icon name="share"></ion-icon>Upload It</button>
+              <ion-icon name="arrow-round-forward" style="position:relative;top:10px;font-size:22pt;" color="primary"></ion-icon>
+              <button ion-button icon-start round (click)="upload()" [disabled]="uploaded"><ion-icon name="cloud-upload"></ion-icon>Upload It</button>
+            
             </div>
         </div>
     </div>
